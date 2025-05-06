@@ -54,26 +54,22 @@
             z-index: 1;
         }
 
-        .heading{
+        .heading {
             font-family: 'VT323', monospace;
             font-size: clamp(2rem, 6vw, 10rem);
             text-align: center;
             justify-content: center;
             align-items: center;
             font-weight: bold;
-           
+
         }
 
-        img{
+        img {
             width: 40%;
             margin-top: -120px;
             z-index: 0;
         }
-        img:hover{
-            width: 41%;
-            margin-top: -120px;
-            z-index: 10;
-        }
+
 
         h4 {
             font-family: 'VT323', monospace;
@@ -92,13 +88,27 @@
 <body>
     <section>
         <h1>Hi, I’m Firdous Khilji and<br>Welcome to my..<br><span class="heading">P o r t f o l i o</span></h1>
-        
-        <img src="C:\Users\DELL\Desktop\fk\images\Portfolio.png" alt="Firdous Khilji Portfolio">
+
+        <img src="images/Portfolio.png" alt="Firdous Khilji" id="profile-img">
         <h4>Front End Developer /UI UX Designer</span></h4>
 
     </section>
 
 </body>
+<script>
+    const img = document.getElementById("profile-img");
+
+    img.addEventListener("mouseover", () => {
+        img.src = "images/hover.png";
+        img.style.zIndex = "10";
+    });
+
+    img.addEventListener("mouseout", () => {
+        img.src = "images/Portfolio.png";
+        img.style.zIndex = "0";
+    });
+</script>
+
 
 
 </html>
