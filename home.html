@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retro Modals</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="doodle.css">
+    <style>
+        :root {
+            --primary-color: #c2ab7a;
+            --secondary-color: #d2bb89;
+            --bg-color: #f2f2f2;
+            --heading-color: #0d0d0d;
+            --text-color: #323232;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'VT323', monospace;
+            display: flex;
+        }
+
+        .navbar {
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+
+        .navbar img {
+            width: 100px;
+            height: auto;
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .navbar img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Modal container */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fdf6e3;
+            width: 90%;
+            max-width: 700px;
+            position: relative;
+            border: 3px solid #000;
+            border-radius: 12px;
+            box-shadow: 6px 6px 0 #00000050;
+            font-family: 'VT323', monospace;
+        }
+
+        /* Modal body (non-tabbed modals) */
+        .modal-body {
+            padding: 2rem;
+            font-size: 1.4rem;
+            line-height: 1.6;
+        }
+
+        /* Fake browser header with tabs */
+        .modal-header {
+            display: flex;
+            align-items: flex-end;
+            /* background-color: #e7dfc6; */
+            border-bottom: 2px solid #000;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 8px;
+            /* padding-left: 1rem; */
+            position: relative;
+            height: 100%;
+            font-size: 1.3rem;
+        }
+
+        /* Tabs */
+        .modal-tab {
+            padding: 10px 50px 10px 10px;
+            border-right: 2px solid #000;
+            border-radius: 12px 12px 0 0;
+            /* margin-right: 10px; */
+            cursor: pointer;
+        }
+
+        .modal-tab.active {
+            background: #e7dfc6;
+            border-right: 2px solid #000;
+        }
+
+        /* Tab content */
+        .tab-content {
+            display: none;
+            padding: 5px;
+            font-size: 1.4rem;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .tab-content.active {
+            display: block;
+            color: var(--heading-color);
+        }
+
+        .outlined-box {
+            border: 3px solid #000;
+            padding: 1rem;
+            border-radius: 6px;
+        }
+
+
+        /* Close Button */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 2rem;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 0 10px;
+        }
+
+        .close:hover {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <img src="images/tab-icons/my-intro-icon.png" alt="Intro" onclick="openModal('modal1')" />
+        <img src="images/tab-icons/projects-icon.png" alt="Projects" onclick="openModal('modal2')" />
+        <img src="images/tab-icons/email-icon.png" alt="Email" onclick="openModal('modal3')" />
+        <img src="images/tab-icons/game-icon.png" alt="Game" onclick="openModal('modal4')" />
+    </div>
+
+    <!-- Replace your <div class="modal" id="modal1"> ... </div> block with this -->
+
+<div class="modal" id="modal1">
+    <div class="modal-content image-background">
+      <div class="modal-overlay">
+        <div class="modal-header">
+          <div class="modal-tab active" onclick="showTab('about')">About Me</div>
+          <div class="modal-tab" onclick="showTab('skills')">Skills</div>
+          <div class="modal-tab" onclick="showTab('hobbies')">Hobbies</div>
+          <span class="close" onclick="closeModal('modal1')">&times;</span>
+        </div>
+  
+        <div class="tab-content active" id="tab-about">
+          <div class="outlined-box">
+            <p>
+              I'm a front-end developer who loves designing and building fun,
+              creative websites. I enjoy working with different people and bringing
+              unique ideas to life.
+            </p>
+          </div>
+        </div>
+  
+        <div class="tab-content" id="tab-skills">
+          <div class="outlined-box">
+            <p>HTML, CSS, JavaScript, React, Vue, Accessibility, Git, Figma</p>
+          </div>
+        </div>
+  
+        <div class="tab-content" id="tab-hobbies">
+          <div class="outlined-box">
+            <p>I enjoy pixel art, gaming, learning UX patterns, and writing CSS-only animations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+    <!-- Modal 2 -->
+    <div class="modal" id="modal2">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <div class="modal-header">Projects</div>
+            <div class="modal-body">
+                Here are a few of my favorite web projects, featuring interactivity, animations, and clean UI design.
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div class="modal" id="modal3">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <div class="modal-header">Email</div>
+            <div class="modal-body">
+                Contact me at: <br><strong>example@email.com</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4 -->
+    <div class="modal" id="modal4">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal4')">&times;</span>
+            <div class="modal-header">Game</div>
+            <div class="modal-body">
+                Check out a fun JavaScript mini-game I built! It's simple but addictive.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('#modal1 .modal-tab');
+            const contents = document.querySelectorAll('#modal1 .tab-content');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+
+            document.querySelector(`#modal1 .modal-tab[onclick="showTab('${tabName}')"]`).classList.add('active');
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+        }
+
+        window.addEventListener('click', function (e) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
